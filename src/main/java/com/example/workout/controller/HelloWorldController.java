@@ -11,8 +11,11 @@ public class HelloWorldController{
 
    @GetMapping("/hello")
     public String sayHello(@RequestParam(value = "name", defaultValue = "World") String name){
-
        return "hello "+name;
-
    }
+
+    @GetMapping("/helloWorld")
+    public String sayHello(){
+        return "hello world";
+    }
 }
