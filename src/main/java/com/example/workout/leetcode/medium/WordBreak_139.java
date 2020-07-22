@@ -11,6 +11,7 @@ public class WordBreak_139 {
     wordBreak("leetcode", Arrays.asList("leet","code"));
   }
 
+
   public static boolean wordBreak(String s, List<String> wordDict) {
     Set<String> wordDictSet=new HashSet(wordDict);
     boolean[] dp = new boolean[s.length() + 1];
