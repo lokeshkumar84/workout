@@ -32,30 +32,41 @@ kv.get("foo", 5); //output "bar2"
 
 Example 2:
 
-Input: inputs = ["TimeMap","set","set","get","get","get","get","get"], inputs = [[],["love","high",10],["love","low",20],["love",5],["love",10],["love",15],["love",20],["love",25]]
+Input: inputs = ["TimeMap","set","set","get","get","get","get","get"],
+inputs = [[],["love","high",10],["love","low",20],["love",5],["love",10],["love",15],["love",20],["love",25]]
 Output: [null,null,null,"","high","high","low","low"]
  */
 public class TimeBasedKeyValueStore_981{
 
-    TimeMap t = new TimeMap();
-    //t.set("1","one",1);
+    public static void main(String arg[]){
+        TimeMap obj = new TimeMap();
+        obj.set("love","high",10);
+        obj.set("love","low",20);
+
+        System.out.println(obj.get("love",5));
+        System.out.println(obj.get("love",10));
+        System.out.println(obj.get("love",15));
+        System.out.println(obj.get("love",20));
+        System.out.println(obj.get("love",25));
 
 
+
+    }
 
 }
 
 class TimeMap {
 
-    Map<String,TreeMap<Integer,String>> map = null;
-
+    Map<String,TreeMap<Integer,String>> map;
 
     public TimeMap() {
-        map = new HashMap<>();
+        map = map = new HashMap<String, TreeMap<Integer, String>>();
     }
 
     public void set(String key, String value, int timestamp) {
 
         if(!map.containsKey(key)){
+
             map.put(key,new TreeMap<>());
         }
         map.get(key).put(timestamp,value);
@@ -66,14 +77,9 @@ class TimeMap {
 
         if(!map.containsKey(key)){
             return "";
-        }else{
-            TreeMap<Integer,String> treeMap = map.get(key);
-            Integer t= treeMap.floorKey(timestamp);
-
-            return t != null?treeMap.get(t):"";
-
-
         }
-
+        TreeMap<Integer,String> treeMap = map.get(key);
+        Integer time = treeMap.floorKey(timestamp);
+        return time != null?treeMap.get(time):"";
     }
 }
