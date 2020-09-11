@@ -13,14 +13,12 @@ Explanation: 342 + 465 = 807.
 https://leetcode.com/problems/add-two-numbers/
  */
 
-public class AddTwoNumbers{
-
+public class AddTwoNumbers_445{
 
     public static void main(String arg[]){
 
         ListNode node1,temp1=null,head1 = null;
         for(int i = 1; i < 4; i++){
-
             node1 = new ListNode(i);
             if(head1 == null){
                 head1 = node1;
@@ -29,11 +27,9 @@ public class AddTwoNumbers{
                 temp1.next = node1;
                 temp1 = node1;
             }
-
         }
         ListNode node2,temp2=null,head2 = null;
         for(int i = 5; i > 1; i--){
-
             node2 = new ListNode(9);
             if(head2 == null){
                 head2 = node2;
@@ -42,12 +38,8 @@ public class AddTwoNumbers{
                 temp2.next = node2;
                 temp2 = node2;
             }
-
         }
-
-
         addTwoNumbers(head1, head2);
-
     }
 
 

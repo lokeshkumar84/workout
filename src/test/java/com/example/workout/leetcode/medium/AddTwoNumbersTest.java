@@ -41,7 +41,7 @@ class AddTwoNumbersTest{
         -----
          */
 
-        ListNode out = AddTwoNumbers.addTwoNumbers(node1, node2);
+        ListNode out = AddTwoNumbers_445.addTwoNumbers(node1, node2);
         while(out != null){
             assertEquals(5,out.val);
             out = out.next;
