@@ -17,7 +17,7 @@ public class ReverseLinkedList{
 
         Node node = AddElement();
 
-        System.out.println("Brute....");
+       /* System.out.println("Brute....");
         Node reverse = ReverseElement(node);
         while(reverse != null){
             System.out.println(reverse.data);
@@ -29,7 +29,47 @@ public class ReverseLinkedList{
         while(reverse1 != null){
             System.out.println(reverse1.data);
             reverse1 = reverse1.next;
+        }*/
+
+        System.out.println("Recursion....");
+        ReverseLinkedList reverse = new ReverseLinkedList();
+        Node reverse2 = reverse.reverseUsingRecursion(node);
+        while(reverse2 != null){
+            System.out.println(reverse2.data);
+            reverse2 = reverse2.next;
         }
+    }
+
+    public static Node left;
+    public static boolean stop;
+
+    private Node reverseUsingRecursion(Node node){
+
+        this.left = node;
+        this.stop = false;
+        recursiveSwap(node);
+        return node;
+    }
+
+    private void recursiveSwap(Node right){
+        if(right.next == null){
+            return;
+        }
+        right = right.next;
+
+        recursiveSwap(right);
+
+        if(this.left == right || right.next == left){
+            stop = true;
+        }
+        if(!stop){
+            int data = this.left.data;
+            this.left.data = right.data;
+            right.data = data;
+        }
+
+        this.left = this.left.next;
+
     }
 
     private static Node LeetCodeReverseElement(Node node){
@@ -80,7 +120,7 @@ public class ReverseLinkedList{
     private static Node AddElement(){
         Node head=null;
         Node temp = null;
-        for(int i=1;i<5;i++){
+        for(int i=1;i<=5;i++){
             Node node = new Node(i);
             if(head == null){
                 head = node;
